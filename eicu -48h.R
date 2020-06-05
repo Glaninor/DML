@@ -117,7 +117,16 @@ metrics = c('accuracy')
 )
 
 history <- model %>% fit(keras.train.d,keras.train.d.l, epochs=30, batch_size=64)
-keras.pre <- predict(model,newdata = keras.test.d)
-model %>% evaluate(keras.test,keras.test.d.l)
-plot(history)
+Error in py_call_impl(callable, dots$args, dots$keywords) : 
+  ValueError: in user code:
+
+    C:\Users\Administrator\AppData\Local\r-miniconda\envs\r-reticulate\lib\site-packages\tensorflow\python\keras\engine\training.py:571 train_function  *
+        outputs = self.distribute_strategy.run(
+    C:\Users\Administrator\AppData\Local\r-miniconda\envs\r-reticulate\lib\site-packages\tensorflow\python\distribute\distribute_lib.py:951 run  **
+        return self._extended.call_for_each_replica(fn, args=args, kwargs=kwargs)
+    C:\Users\Administrator\AppData\Local\r-miniconda\envs\r-reticulate\lib\site-packages\tensorflow\python\distribute\distribute_lib.py:2290 call_for_each_replica
+        return self._call_for_each_replica(fn, args, kwargs)
+    C:\Users\Administrator\AppData\Local\r-miniconda\envs\r-reticulate\lib\site-packages\tensorflow\python\distribute\distribute_lib.py:2649 _call_for_each_replica
+        return fn(*args, **kwargs)
+    C:\Users\Administrator\AppData\Local\r-miniconda\envs\r-reticulate\lib\site-packages\tensorflow\python\k
 
