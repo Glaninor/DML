@@ -33,7 +33,12 @@ keras.pre <- predict(model,keras.test.x)
 predict <- prediction(keras.pre,keras.test.y)
 predict.auc <- performance(predict,'auc')
 predict.auc@y.values
+[[1]]
+[1] 0.9522891
+
 model %>% evaluate(keras.test.x,keras.test.y)
+     loss  accuracy 
+0.3398948 0.9195926 
 
 plot(history)
 
