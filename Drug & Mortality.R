@@ -92,7 +92,7 @@ gradientD <- function(x,y,error,maxiter,stepmethod=T,step=0.1,alpha=0.10,beta=0.
   result
 }
 
-grardmodel <- gradientD(trian.x,trian.y,error=0.1,stepmethod=T,step=0.1,alpha=0.1,beta=0.9)
+grardmodel <- gradientD(trian.x,trian.y,error=0.1,1000,stepmethod=T,step=0.1,alpha=0.1,beta=0.9)
 
 
 
