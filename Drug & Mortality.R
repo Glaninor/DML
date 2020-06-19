@@ -12,15 +12,15 @@ mor <- read.csv("mortality_table.csv")
 ntrain <- sample(nrow(drugMor),floor(0.7*nrow(drugMor)),replace = FALSE)
 train <- drugMor[ntrain,]
 test <- drugMor[-ntrain,]
-keras.trian.x <- as.matrix(train[,c(-1,-2)])
-keras.trian.y <- as.matrix(train[,2])
-keras.test.x <- as.matrix(test[,c(-1,-2)])
-keras.test.y <- as.matrix(test[,2])
+trian.x <- as.matrix(train[,c(-1,-2)])
+trian.y <- as.matrix(train[,2])
+test.x <- as.matrix(test[,c(-1,-2)])
+test.y <- as.matrix(test[,2])
 
 #keras
 keras.model <- keras_model_sequential()
 keras.model %>%
-layer_dense(units = 64, activation = 'relu', input_shape = c(ncol(keras.test.x))) %>%
+layer_dense(units = 64, activation = 'relu', input_shape = c(ncol(test.x))) %>%
 layer_dropout(rate = 0.1) %>%
 layer_dense(units = 32, activation = 'relu') %>%
 layer_dropout(rate = 0.1) %>%
@@ -31,9 +31,9 @@ loss = loss_binary_crossentropy,
 metrics = c('accuracy')
 )
 
-history <- keras.model %>% fit(keras.train.x,keras.train.y, epochs=30, batch_size=64)
-keras.pre <- predict(keras.model,keras.test.x)
-predict <- prediction(keras.pre,keras.test.y)
+history <- keras.model %>% fit(train.x,train.y, epochs=30, batch_size=64)
+keras.pre <- predict(keras.model,test.x)
+predict <- prediction(keras.pre,test.y)
 predict.auc <- performance(predict,'auc')
 predict.auc@y.values
 [[1]]
