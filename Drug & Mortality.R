@@ -95,4 +95,17 @@ gradientD <- function(x,y,error,maxiter,stepmethod=T,step=0.1,alpha=0.10,beta=0.
 grardmodel <- gradientD(trian.x,trian.y,error=0.1,1000,stepmethod=T,step=0.1,alpha=0.1,beta=0.9)
 
 
+#Gradient Descent
+library(gradDescent)
+drugMor.split <- splitData(drugMor,dataTrainRate = 0.5,seed = 1111)
+grad.train <- drugMor.split$dataTrain
+grad.test <- drugMor.split$dataTest
+dataInput <- (grad.test)[,1:ncol(grad.test)-1]
+grad.model <- GD(grad.train)
+detach("package:ROCR")
+grad.prediction <- prediction(grad.model,dataInput)
+grad.prediction <- grad.prediction[,ncol(grad.prediction)]
+grad.prediction.auc <- performance(grad.prediction,'auc')
 
+Error in performance(grad.prediction, "auc") : 
+  Wrong argument types: First argument must be of type 'prediction'; second and optional third argument must be available performance measures!
