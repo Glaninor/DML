@@ -9,13 +9,13 @@ drug <- read.csv("drug_table_mortality_with_no.csv")
 mor <- read.csv("mortality_table.csv")
 
 #sample
-ntrain <- sample(nrow(drugMor),floor(0.7*nrow(drugMor)),replace = FALSE)
-train <- drugMor[ntrain,]
-test <- drugMor[-ntrain,]
-trian.x <- as.matrix(train[,c(-1,-2)])
-trian.y <- as.matrix(train[,2])
-test.x <- as.matrix(test[,c(-1,-2)])
-test.y <- as.matrix(test[,2])
+ntrain <- sample(nrow(drugmor),floor(0.7*nrow(drugmor)),replace = FALSE)
+train <- drugmor[ntrain,]
+test <- drugmor[-ntrain,]
+train.y <- as.matrix(train[,ncol(train)])
+train.x <- as.matrix(train[,c(-1,-ncol(train))])
+test.y <- as.matrix(test[,ncol(test)])
+test.x <- as.matrix(test[,c(-1,-ncol(test))])
 
 #keras
 keras.model <- keras_model_sequential()
@@ -158,9 +158,9 @@ grardmodel <- gradientD(trian.x,trian.y,error=0.1,1000,stepmethod=T,step=0.1,alp
 
 #Gradient Descent
 library(gradDescent)
-drugMor.split <- splitData(drugMor,dataTrainRate = 0.5,seed = 1111)
-grad.train <- drugMor.split$dataTrain
-grad.test <- drugMor.split$dataTest
+drugmor.split <- splitData(drugmor,dataTrainRate = 0.5,seed = 1111)
+grad.train <- drugmor.split$dataTrain
+grad.test <- drugmor.split$dataTest
 dataInput <- (grad.test)[,1:ncol(grad.test)-1]
 grad.model <- GD(grad.train)
 detach("package:ROCR")
