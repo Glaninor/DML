@@ -155,8 +155,6 @@ gradientD <- function(x,y,error,maxiter,stepmethod=T,step=0.1,alpha=0.10,beta=0.
 
 grardmodel <- gradientD(trian.x,trian.y,error=0.1,1000,stepmethod=T,step=0.1,alpha=0.1,beta=0.9)
 
-
-#Gradient Descent
 library(gradDescent)
 drugmor.split <- splitData(drugmor,dataTrainRate = 0.5,seed = 1111)
 grad.train <- drugmor.split$dataTrain
