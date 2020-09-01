@@ -165,6 +165,3 @@ detach("package:ROCR")
 grad.prediction <- prediction(grad.model,dataInput)
 grad.prediction <- grad.prediction[,ncol(grad.prediction)]
 grad.prediction.auc <- performance(grad.prediction,'auc')
-
-Error in performance(grad.prediction, "auc") : 
-  Wrong argument types: First argument must be of type 'prediction'; second and optional third argument must be available performance measures!
