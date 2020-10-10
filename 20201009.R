@@ -34,12 +34,79 @@ keras.model %>%
   )
 
 history <- keras.model %>% fit(train.x,train.y, epochs=30, batch_size=64)
-keras.predict <- predict(keras.model,test.x)
-keras.prediction <- prediction(keras.predict,test.y)
-keras.auc <- performance(keras.prediction,'auc')
-keras.auc@y.values
 
-keras.model %>% evaluate(test.x,test.y)
+#
+Epoch 1/30
+337/337 [==============================] - 2s 5ms/step - loss: 0.0170 - accuracy: 0.9996
+Epoch 2/30
+337/337 [==============================] - 1s 3ms/step - loss: 9.9411e-08 - accuracy: 1.0000
+Epoch 3/30
+337/337 [==============================] - 1s 3ms/step - loss: 2.3826e-09 - accuracy: 1.0000
+Epoch 4/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.3502e-09 - accuracy: 1.0000
+Epoch 5/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.3986e-09 - accuracy: 1.0000
+Epoch 6/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.1093e-09 - accuracy: 1.0000
+Epoch 7/30
+337/337 [==============================] - 1s 3ms/step - loss: 4.5957e-10 - accuracy: 1.0000
+Epoch 8/30
+337/337 [==============================] - 1s 3ms/step - loss: 3.9135e-10 - accuracy: 1.0000
+Epoch 9/30
+337/337 [==============================] - 1s 3ms/step - loss: 2.9328e-10 - accuracy: 1.0000
+Epoch 10/30
+337/337 [==============================] - 1s 3ms/step - loss: 2.8226e-10 - accuracy: 1.0000
+Epoch 11/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.2690e-10 - accuracy: 1.0000
+Epoch 12/30
+337/337 [==============================] - 1s 3ms/step - loss: 2.2909e-10 - accuracy: 1.0000
+Epoch 13/30
+337/337 [==============================] - 1s 3ms/step - loss: 3.6198e-10 - accuracy: 1.0000
+Epoch 14/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.2287e-10 - accuracy: 1.0000
+Epoch 15/30
+337/337 [==============================] - 1s 3ms/step - loss: 2.5093e-10 - accuracy: 1.0000
+Epoch 16/30
+337/337 [==============================] - 1s 3ms/step - loss: 8.7702e-11 - accuracy: 1.0000
+Epoch 17/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.7961e-10 - accuracy: 1.0000
+Epoch 18/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.3158e-10 - accuracy: 1.0000
+Epoch 19/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.2212e-10 - accuracy: 1.0000
+Epoch 20/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.2293e-10 - accuracy: 1.0000
+Epoch 21/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.5291e-10 - accuracy: 1.0000
+Epoch 22/30
+337/337 [==============================] - 1s 3ms/step - loss: 8.2111e-11 - accuracy: 1.0000
+Epoch 23/30
+337/337 [==============================] - 1s 3ms/step - loss: 6.3524e-11 - accuracy: 1.0000
+Epoch 24/30
+337/337 [==============================] - 1s 3ms/step - loss: 4.5704e-11 - accuracy: 1.0000
+Epoch 25/30
+337/337 [==============================] - 1s 3ms/step - loss: 7.2359e-11 - accuracy: 1.0000
+Epoch 26/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.5442e-10 - accuracy: 1.0000
+Epoch 27/30
+337/337 [==============================] - 1s 2ms/step - loss: 3.7519e-11 - accuracy: 1.0000
+Epoch 28/30
+337/337 [==============================] - 1s 3ms/step - loss: 2.0006e-10 - accuracy: 1.0000
+Epoch 29/30
+337/337 [==============================] - 1s 3ms/step - loss: 6.9150e-11 - accuracy: 1.0000
+Epoch 30/30
+337/337 [==============================] - 1s 3ms/step - loss: 1.0500e-10 - accuracy: 1.0000
+keras.pre <- predict(keras.model,test.x)
+predict <- prediction(keras.pre,test.y)
+predict.auc <- performance(predict,'auc')
+predict.auc@y.values
+[[1]]
+[1] 0.9522891
+
+keras.model %>% evaluate(keras.test.x,keras.test.y)
+289/289 [==============================] - 0s 724us/step - loss: 0.0058 - accuracy: 0.9999
+       loss    accuracy 
+0.005806785 0.999891639 
 
 plot(history)
 
